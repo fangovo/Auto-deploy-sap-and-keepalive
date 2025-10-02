@@ -265,10 +265,10 @@ jobs:
     - name: Verify deployment
       run: |
         # 设置环境变量
-        cf set-env ${{ env.APP_NAME }} UPSTASH_URL ${{ secrets.UPSTASH_URL || "你们url" }}
-        cf set-env ${{ env.APP_NAME }} UPSTASH_TOKEN ${{ secrets.UPSTASH_TOKEN || "token" }}
-        cf set-env ${{ env.APP_NAME }} USERNAME ${{ secrets.USERNAME || "经历才懂得" }}
-        cf set-env ${{ env.APP_NAME }} NEXT_PUBLIC_STORAGE_TYPE ${{ secrets.NEXT_PUBLIC_STORAGE_TYPE || "upstash" }}
+        cf set-env ${{ env.APP_NAME }} UPSTASH_URL ${{ secrets.UPSTASH_URL || "123456" }}
+        cf set-env ${{ env.APP_NAME }} UPSTASH_TOKEN ${{ secrets.UPSTASH_TOKEN || "123456" }}
+        cf set-env ${{ env.APP_NAME }} USERNAME ${{ secrets.USERNAME || "123456" }}
+        cf set-env ${{ env.APP_NAME }} NEXT_PUBLIC_STORAGE_TYPE ${{ secrets.NEXT_PUBLIC_STORAGE_TYPE || "123456" }}
         cf set-env ${{ env.APP_NAME }} PASSWORD ${{ secrets.TV_PASSWORD || "123456" }}
         # 重新打包并检查状态
         cf restage ${{ env.APP_NAME }}
