@@ -265,12 +265,11 @@ jobs:
     - name: Verify deployment
       run: |
         # 设置环境变量
-        cf set-env ${{ env.APP_NAME }} UPSTASH_URL "https://open-gator-7719.upstash.io"
-        cf set-env ${{ env.APP_NAME }} UPSTASH_TOKEN "AR4nAAImcDE5MmZjNmVjNGQ3MGM0NjYyOTAyY2JhNGMyNjkxNDYxZXAxNzcxOQ"
-        cf set-env ${{ env.APP_NAME }} USERNAME "经历才懂得"
-        cf set-env ${{ env.APP_NAME }} NEXT_PUBLIC_STORAGE_TYPE "upstash"
-        cf set-env ${{ env.APP_NAME }} PASSWORD ${{ secrets.TV_PASSWORD || '123456'}}
-
+        cf set-env ${{ env.APP_NAME }} UPSTASH_URL ${{ secrets.UPSTASH_URL || "https://open-gator-7719.upstash.io" }}
+        cf set-env ${{ env.APP_NAME }} UPSTASH_TOKEN ${{ secrets.UPSTASH_TOKEN || "AR4nAAImcDE5MmZjNmVjNGQ3MGM0NjYyOTAyY2JhNGMyNjkxNDYxZXAxNzcxOQ" }}
+        cf set-env ${{ env.APP_NAME }} USERNAME ${{ secrets.USERNAME || "经历才懂得" }}
+        cf set-env ${{ env.APP_NAME }} NEXT_PUBLIC_STORAGE_TYPE ${{ secrets.NEXT_PUBLIC_STORAGE_TYPE || "upstash" }}
+        cf set-env ${{ env.APP_NAME }} PASSWORD ${{ secrets.TV_PASSWORD || "123456" }}
         # 重新打包并检查状态
         cf restage ${{ env.APP_NAME }}
         STATUS=$(cf app ${{ env.APP_NAME }} | grep "requested state:" | awk '{print $3}')
